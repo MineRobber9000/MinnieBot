@@ -15,7 +15,6 @@ class MiniScriptCog(Cog, name="MiniScript"):
 			proc = await asyncio.create_subprocess_exec(MINISCRIPT_EXEC,tf.name,stdout=PIPE,stderr=STDOUT)
 			try:
 				stdout, stderr = await asyncio.wait_for(proc.communicate(),timeout=5.0)
-				print(stdout, stderr, proc.returncode)
 				return stdout, proc.returncode
 			except asyncio.TimeoutError:
 				proc.kill()
